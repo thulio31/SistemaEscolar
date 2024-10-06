@@ -41,6 +41,6 @@ namespace Escola._01Services
         {
             return repository.BuscarNotas(id);
         }
-
+             
     }
 }
