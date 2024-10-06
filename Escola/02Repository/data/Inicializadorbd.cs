@@ -79,6 +79,15 @@ namespace Aluno._02Repository.data
                 COMENTARIO TEXT NOT NULL,    
                 IDALUNO INTEGER NOT NULL );";
 
+                commandoSQL += @"   
+                 CREATE TABLE IF NOT EXISTS Usuarios(
+                 Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                 Nome TEXT NOT NULL,
+                 Username TEXT NOT NULL,
+                 Senha TEXT NOT NULL,
+                 Email TEXT NOT NULL
+                );";
+
 
                 connection.Execute(commandoSQL); //comando do Dapper que executa qualquer comando sql
 

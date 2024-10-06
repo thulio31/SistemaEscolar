@@ -1,6 +1,8 @@
 ﻿using Aluno._03Entidades;
 using Aluno._03Entidades.DTO;
 using AutoMapper;
+using Core._03_Entidades.DTO.Usuarios;
+using Core.Entidades;
 using Escola._03Entidades;
 using Escola._03Entidades.DTO;
 using System;
@@ -25,6 +27,8 @@ namespace Escola
             CreateMap<CreateDisciplinaDTO, Disciplina>().ReverseMap();
 
             CreateMap<CreateNotasDTO, Notas>().ReverseMap();
+
+            CreateMap<UsuarioLoginDTO, Usuario>().ReverseMap();
         }        
     }
 }
