@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core._03_Entidades.DTO.Usuarios
+
+namespace FrontEnd
 {
     public class UsuarioLoginDTO
     {
+
         public string Email { get; set; }
         public string Senha { get; set; }
         public string Tipo { get; set; }
