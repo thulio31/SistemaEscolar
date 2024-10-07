@@ -53,22 +53,57 @@ namespace FrontEnd
 
         public void ExibirMenuPrincipal()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("1 - Listar Usuarios por tipos");
+            Console.WriteLine("2 - Cadastrar Produto");
+            Console.WriteLine("3 - Realizar uma compra");
+            Console.WriteLine("Qual operação deseja realizar?");
+            int resposta = int.Parse(Console.ReadLine());
         }
 
         public Usuario CriarUsuario()
         {
-            throw new NotImplementedException();
+            Usuario usuario = new Usuario();
+            Console.WriteLine("Digite o seu nome");
+            usuario.Nome = Console.ReadLine();
+            Console.WriteLine("Digite sua senha");
+            usuario.Senha = Console.ReadLine();
+            Console.WriteLine("Digite seu email");
+            usuario.Email = Console.ReadLine();
+            Console.WriteLine("Digite o seu tipo de usuario");
+            usuario.Tipo = Console.ReadLine();
+            return usuario;
         }
 
         public void FazerLogin()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Digite o seu email: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("Digite sua senha: ");
+            string senha = Console.ReadLine();
+            Console.WriteLine("Digite o tipo de usuario: ");
+            string tipo = Console.ReadLine();
+            UsuarioLoginDTO usuDTO = new UsuarioLoginDTO
+            {
+                Email = email,
+                Senha = senha,
+                Tipo = tipo
+            };
+            Usuario usuario = _usuarioUC.FazerLogin(usuDTO);
+            if (usuario == null)
+            {
+                Console.WriteLine("Usuário ou senha inválidos!!!");
+            }
+            UsuarioLogado = usuario;
         }
 
         public int ExibirLogin()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("--------- LOGIN ---------");
+            Console.WriteLine("1 - Deseja Fazer Login");
+            Console.WriteLine("2 - Deseja se Cadastrar");
+            Console.WriteLine("3 - Listar Usuario Cadastrados");
+            return int.Parse(Console.ReadLine());
         }
+
     }
 }

@@ -38,7 +38,7 @@ public class UsuarioService
         List<Usuario> listUsuario = Listar();
         foreach (Usuario usuario in listUsuario)
         {
-            if(usuario.Username == usuarioLogin.Username
+            if(usuario.Email == usuarioLogin.Email
                 && usuario.Senha == usuarioLogin.Senha)
             {
                 return usuario;
