@@ -39,8 +39,7 @@ namespace FrontEnd
                 //olhar nota por disciplina
                 Console.WriteLine(
                       "1 - Ver Boletim " +
-                    "\n2 - Ver materias de disciplina" +
-                    "\n3 - Ver Turma"
+                    "\n2 - Ver Turma"
                     );
                 resposta = int.Parse(Console.ReadLine());
                 
@@ -48,14 +47,11 @@ namespace FrontEnd
             {
                 ExibirBoletim();
             }
-            else if (resposta == 2) 
-            {
-                //ListarMateriaPorDisciplina();
-            }
-            else if (resposta == 3)
+           
+            else if (resposta == 2)
             {
                 Console.WriteLine("1 - Ver Horarios");
-                Console.WriteLine("2 - Ver Atividades Pendentes");
+                //Console.WriteLine("2 - Ver Atividades Pendentes");
                 resposta = int.Parse(Console.ReadLine());
                 if(resposta == 1)
                 {

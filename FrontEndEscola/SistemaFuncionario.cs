@@ -23,7 +23,7 @@ namespace FrontEnd
                 "\n1 - Ver Turma" +
                 "\n2 - Ver Alunos " +
                 "\n3 - Ver Notas" +
-                "\n4 - Ver Disciplinas");
+                "\n4 - Ver Disciplinas");//salario 
             int resposta = int.Parse(Console.ReadLine());
             if(resposta == 1)//Turma
             {
