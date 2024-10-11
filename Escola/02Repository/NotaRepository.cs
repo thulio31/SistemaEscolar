@@ -32,6 +32,14 @@ namespace Escola._02Repository
 
             return connection.GetAll<Notas>().ToList(); // retorna a tabela em forma de lista    
         }
+        public Notas BuscarNotasPorAluno( int idaluno)
+        {
+            Notas not = new Notas();
+            not.IdAluno = idaluno;
+            using var connection = new SQLiteConnection(_connectionString);// conexao
+            return connection.Get<Notas>(idaluno);
+        }
+
         public Notas BuscarNotas(int id)
         {
             using var connection = new SQLiteConnection(_connectionString);// conexao

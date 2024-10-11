@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Escola", "Escola\Escola.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Escolas", "Api.Escolas\Api.Escolas.csproj", "{DBCEDA01-014F-4036-BAB9-458CDB3A93DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEnd", "FrontEnd\FrontEnd.csproj", "{9349BA1B-32A8-4BFD-8FAC-5B44B3334AEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEndEscola", "FrontEndEscola\FrontEndEscola.csproj", "{F4B0CA71-53BF-425F-A663-EBBF8398FB84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{DBCEDA01-014F-4036-BAB9-458CDB3A93DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBCEDA01-014F-4036-BAB9-458CDB3A93DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBCEDA01-014F-4036-BAB9-458CDB3A93DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9349BA1B-32A8-4BFD-8FAC-5B44B3334AEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9349BA1B-32A8-4BFD-8FAC-5B44B3334AEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9349BA1B-32A8-4BFD-8FAC-5B44B3334AEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9349BA1B-32A8-4BFD-8FAC-5B44B3334AEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4B0CA71-53BF-425F-A663-EBBF8398FB84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4B0CA71-53BF-425F-A663-EBBF8398FB84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4B0CA71-53BF-425F-A663-EBBF8398FB84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4B0CA71-53BF-425F-A663-EBBF8398FB84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
