@@ -27,7 +27,6 @@ namespace FrontEnd
         public SistemaEstudante(HttpClient cliente)
         {
             _usuarioUC = new UsuarioUC(cliente);
-            sistemaG = new SistemaGlobal(cliente);
         }
        
         public void ExibirMenuEstudante()
@@ -47,7 +46,6 @@ namespace FrontEnd
             {
                 ExibirBoletim();
             }
-           
             else if (resposta == 2)
             {
                 Console.WriteLine("1 - Ver Horarios");
@@ -62,7 +60,7 @@ namespace FrontEnd
                     //ListarAtividadesPendentesPorAlunoId();
                 }
 
-            }
+            } 
 
 
         }
@@ -78,8 +76,8 @@ namespace FrontEnd
             Console.WriteLine($"Boletim do {alunos.Nome} Id: {alunos.Id}");
             foreach (Notas notas in nt)
             {
-                Console.WriteLine($"Disciplina: {notas.disciplina} - Nota: {notas.valor}");
-            }
+                Console.WriteLine($"Disciplina: {notas.disciplinaId} - Nota: {notas.valor}");
+            } ,0 
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         }
     }

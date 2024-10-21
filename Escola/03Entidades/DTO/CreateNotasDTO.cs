@@ -9,7 +9,7 @@ namespace Escola._03Entidades.DTO
     public class CreateNotasDTO
     {
 
-        public Disciplina disciplina { get; set; }
+        public int disciplinaId { get; set; }
         public decimal valor { get; set; }
         public DateTime data { get; set; } // data em que a nota foi atribuída
         public string comentario { get; set; }
