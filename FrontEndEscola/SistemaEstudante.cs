@@ -18,7 +18,6 @@ namespace FrontEnd
     public class SistemaEstudante
     {
         private static Usuario UsuarioLogado { get; set; }
-        private static SistemaGlobal sistemaG { get; set; }
         private readonly UsuarioUC _usuarioUC;
         private readonly NotaRepository notaRepository; 
         private readonly NotasUc _notasUC;
@@ -77,7 +76,7 @@ namespace FrontEnd
             foreach (Notas notas in nt)
             {
                 Console.WriteLine($"Disciplina: {notas.disciplinaId} - Nota: {notas.valor}");
-            } ,0 
+            }  
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         }
     }
