@@ -74,8 +74,8 @@ namespace FrontEndEscola
             usuario.Email = Console.ReadLine();
             Console.WriteLine("Digite sua senha: ");
             usuario.Senha = Console.ReadLine();
-            Console.WriteLine("Digite seu tipo de usuario:\nFuncionario ou Estudante-- ");
-            usuario.Tipo = Console.ReadLine();
+            Console.WriteLine("Digite seu tipo de usuario:\n1 - Funcionario\n2 - Aluno-- ");
+            usuario.Tipo = int.Parse(Console.ReadLine());
             return usuario;
         }
        
@@ -111,13 +111,13 @@ namespace FrontEndEscola
 
         public void IdentificarUsuario()
         {
-            if (UsuarioLogado.Tipo == "Estudante")
+            if (UsuarioLogado.Tipo == 1)
             {
-                _sistemaEstudante.ExibirMenuEstudante();
+                _sistemaFuncionario.ExibirMenuFuncionario();  
             }
-            else if (UsuarioLogado.Tipo == "Funcionario")
+            else if (UsuarioLogado.Tipo == 2)
             {
-                _sistemaFuncionario.ExibirMenuFuncionario();
+                _sistemaEstudante.ExibirMenuAluno();
             }
             else
             {

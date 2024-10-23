@@ -27,10 +27,9 @@ namespace FrontEnd
         public SistemaEstudante(HttpClient cliente)
         {
             _usuarioUC = new UsuarioUC(cliente);
-            sistemaG = new SistemaGlobal(cliente);
         }
        
-        public void ExibirMenuEstudante()
+        public void ExibirMenuAluno()
         {
             int resposta = -1;
 
