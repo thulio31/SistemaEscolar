@@ -1,4 +1,5 @@
 ﻿using Aluno._03Entidades;
+using Dapper.Contrib.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Escola._03Entidades
 {
+    [Table("Notas")]
     public class Notas
     {
         public int id { get; set; } 
