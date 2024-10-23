@@ -28,7 +28,7 @@ namespace FrontEnd
             _usuarioUC = new UsuarioUC(cliente);
         }
        
-        public void ExibirMenuEstudante()
+        public void ExibirMenuAluno()
         {
             int resposta = -1;
 
@@ -45,6 +45,7 @@ namespace FrontEnd
             {
                 ExibirBoletim();
             }
+           
             else if (resposta == 2)
             {
                 Console.WriteLine("1 - Ver Horarios");
@@ -59,7 +60,7 @@ namespace FrontEnd
                     //ListarAtividadesPendentesPorAlunoId();
                 }
 
-            } 
+            }
 
 
         }
