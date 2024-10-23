@@ -85,7 +85,7 @@ namespace Aluno._02Repository.data
                  Nome TEXT NOT NULL,
                  Senha TEXT NOT NULL,
                  Email TEXT NOT NULL,
-                 Tipo TEXT NOT NULL
+                 Tipo INTEGER NOT NULL
                 );";
 
 

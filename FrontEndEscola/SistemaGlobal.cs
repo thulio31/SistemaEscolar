@@ -74,7 +74,7 @@ namespace FrontEndEscola
             usuario.Email = Console.ReadLine();
             Console.WriteLine("Digite sua senha: ");
             usuario.Senha = Console.ReadLine();
-            Console.WriteLine("Digite seu tipo de usuario:\n1 - Funcionario\n2 - Aluno-- ");
+            Console.WriteLine("Digite seu tipo de usuario:\n1 - Funcionario\n2 - Aluno ");
             usuario.Tipo = int.Parse(Console.ReadLine());
             return usuario;
         }
