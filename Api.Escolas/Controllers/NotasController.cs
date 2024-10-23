@@ -31,7 +31,8 @@ namespace Api.Escolas.Controllers
         public void AdicionarContrib(CreateNotasDTO notDto) //pegando a dto
         {
             Notas not = new Notas(); //pegando de um objeto e jogando para outro objeto
-            not.disciplina = notDto.disciplina; //propriedades para DTO
+            not.disciplinaId = notDto.disciplinaId;
+            not.disciplinaId = disciplinaId; //propriedades para DTO
             not.valor = notDto.valor;
             not.data = notDto.data;
             not.comentario = notDto.comentario;
