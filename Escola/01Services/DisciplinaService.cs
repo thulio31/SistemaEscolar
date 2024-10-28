@@ -1,4 +1,5 @@
 ﻿using Escola._02Repository;
+using Escola._02Repository.Interfaces;
 using Escola._03Entidades;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Escola._01Services
 {
     public class DisciplinaService
     {
-        public DisciplinaRepository repository { get; set; }
+        public IDisciplinaRepository repository { get; set; }
 
         public DisciplinaService(string StringConnection)
         {

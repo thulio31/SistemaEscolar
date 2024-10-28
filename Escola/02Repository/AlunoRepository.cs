@@ -2,17 +2,18 @@
 using AutoMapper;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Escola._02Repository.Interfaces;
 using System.Configuration;
 using System.Data.SQLite;
 
 namespace Aluno._02Repository
 {
-    public class FuncionarioRepository
+    public class AlunoRepository : IAlunoRepository
     {
         public readonly string _connectionString; //Variável de connection string a ser preenchida
         //private readonly IMapper _mapper; //criando o mapper a ser preenchido   IMapper mapper,
 
-        public FuncionarioRepository( string StringConnection) //Responsavel por preencher a connection string
+        public AlunoRepository( string StringConnection) //Responsavel por preencher a connection string
         {
             ////_mapper = mapper;
             _connectionString = StringConnection;

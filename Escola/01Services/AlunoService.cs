@@ -1,15 +1,16 @@
 ﻿using Aluno._02Repository;
 using Aluno._03Entidades;
+using Escola._02Repository.Interfaces;
 
 namespace Aluno._01Services
 {
     public class AlunoService
     {
-        public FuncionarioRepository repository { get; set; }
+        public IAlunoRepository repository { get; set; }
 
         public AlunoService(string StringConnection)
         {
-            repository = new FuncionarioRepository(StringConnection);
+            repository = new AlunoRepository(StringConnection);
         }
 
         public void Adicionar(Alunos aluno)
