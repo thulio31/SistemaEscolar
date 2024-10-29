@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Core._03_Entidades.DTO.Usuarios;
 using Core.Entidades;
+using Escola._01Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using TrabalhoFinal._01_Services;
 
@@ -10,7 +11,7 @@ namespace API.Controllers;
 [Route("[controller]")]
 public class UsuarioController : ControllerBase
 {
-    private readonly UsuarioService _service;
+    private readonly IUsuarioService _service;
     private readonly IMapper _mapper;
     public UsuarioController(IConfiguration config, IMapper mapper)
     {

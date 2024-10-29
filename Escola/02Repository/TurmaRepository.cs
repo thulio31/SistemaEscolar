@@ -2,6 +2,7 @@
 using AutoMapper;
 using Dapper;
 using Dapper.Contrib.Extensions;
+using Escola._02Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Aluno._02Repository
 {
-      public class TurmaRepository
+      public class TurmaRepository: ITurmaRepository
     {
         public readonly string _connectionString; //Variável de connection string a ser preenchida
         //private readonly IMapper _mapper; //criando o mapper a ser preenchidoIMapper mapper,

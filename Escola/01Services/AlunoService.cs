@@ -1,10 +1,11 @@
 ﻿using Aluno._02Repository;
 using Aluno._03Entidades;
+using Escola._01Services.Interfaces;
 using Escola._02Repository.Interfaces;
 
 namespace Aluno._01Services
 {
-    public class AlunoService
+    public class AlunoService : IAlunoService
     {
         public IAlunoRepository repository { get; set; }
 

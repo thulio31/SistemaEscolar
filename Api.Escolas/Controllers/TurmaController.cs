@@ -4,6 +4,7 @@ using Aluno._03Entidades;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Aluno._01Services;
+using Escola._01Services.Interfaces;
 
 namespace EscolaAPI.Controllers
 {
@@ -12,7 +13,7 @@ namespace EscolaAPI.Controllers
     [Route("[controller]")] //DataNotation
     public class TurmaController : ControllerBase
     {
-        private readonly TurmaService _service;
+        private readonly ITurmaService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
         public TurmaController(IMapper mapper, IConfiguration configuration)

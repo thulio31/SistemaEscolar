@@ -1,10 +1,11 @@
 ﻿using Core.Entidades;
 using Dapper.Contrib.Extensions;
+using Escola._02Repository.Interfaces;
 using System.Data.SQLite;
 
 namespace TrabalhoFinal._02_Repository;
 
-public class UsuarioRepository
+public class UsuarioRepository : IUsuarioRepository
 {
     private readonly string ConnectionString;
     public UsuarioRepository(string connectioString)

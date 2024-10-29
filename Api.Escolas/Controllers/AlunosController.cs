@@ -1,7 +1,9 @@
-﻿using Aluno._02Repository;
+﻿using Aluno._01Services;
+using Aluno._02Repository;
 using Aluno._03Entidades;
 using Aluno._03Entidades.DTO;
 using AutoMapper;
+using Escola._01Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EscolaAPI.Controllers
@@ -11,19 +13,19 @@ namespace EscolaAPI.Controllers
     [Route("[controller]")] //DataNotation
     public class AlunosController:ControllerBase
     {
-        private readonly FuncionarioRepository _repository;
+        private readonly IAlunoService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
         public AlunosController(IMapper mapper, IConfiguration configuration)
         {
             string _connectionString = configuration.GetConnectionString("DefaultConnection");//Passando a connection para uma nova string
             _mapper = mapper;
-            _repository = new FuncionarioRepository(_connectionString);
+            _service = new AlunoService(_connectionString);
         }
         [HttpGet("Listar-Alunos")]// Rota (EndPoint)
         public List<Alunos> ListarAlunos()
         {
-            return _repository.ListarAlunos();
+            return _service.Listar();
         }
         [HttpPost("Adicionar-dapper-contrib")]// Rota (EndPoint)
         public void AdicionarContrib(CreateAlunoDTO alDto) //pegando a dto
@@ -36,25 +38,25 @@ namespace EscolaAPI.Controllers
             alu.Serie = alDto.Serie;
             alu.Turma = alDto.Turma;
             alu.IdFuncionarioEncarregado = alDto.IdFuncionarioEncarregado;
-            _repository.AdicionarContrib(alu);
+            _service.Adicionar(alu);
         } 
 
         [HttpGet("Buscar-Alunos")]
         public Alunos BuscarAlunos(int id)
         {
-            return _repository.BuscarAlunos(id);
+            return _service.BuscarAlunosPorId(id);
         }
 
         [HttpDelete("Delete-Alunos")]// Rota (EndPoint)
         public void DeleteAlunos(int id)
         {
-            _repository.Delete(id);
+            _service.Remover(id);
         }
 
         [HttpPut("Editar-Alunos")]// Rota (EndPoint)
         public void EditarAlunos(Alunos aluno)
         {
-            _repository.Editar(aluno);
+            _service.Editar(aluno);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Aluno._03Entidades;
 using Dapper.Contrib.Extensions;
+using Escola._02Repository.Interfaces;
 using Escola._03Entidades;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Escola._02Repository
 {
-    public class NotaRepository
+    public class NotaRepository : INotaRepository
     {
         public readonly string _connectionString; //Variável de connection string a ser preenchida
         //private readonly IMapper _mapper; //criando o mapper a ser preenchidoIMapper mapper,

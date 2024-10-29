@@ -1,5 +1,7 @@
 ﻿using Aluno._02Repository;
 using Aluno._03Entidades;
+using Escola._01Services.Interfaces;
+using Escola._02Repository.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace Aluno._01Services
 {
-    public class TurmaService
+    public class TurmaService : ITurmaService
     {
-        public TurmaRepository repository { get; set; }
+        public ITurmaRepository repository { get; set; }
 
         public TurmaService(string StringConnection)
         {

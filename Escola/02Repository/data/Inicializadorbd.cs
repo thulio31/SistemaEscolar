@@ -73,7 +73,7 @@ namespace Aluno._02Repository.data
                 commandoSQL += @"
                 CREATE TABLE IF NOT EXISTS Notas(
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
-                DISCIPLINAID INTEGER NOT NULL,
+                disciplinaId INTEGER NOT NULL,
                 VALOR REAL NOT NULL,
                 DATA DATE UNIQUE NOT NULL,
                 COMENTARIO TEXT NOT NULL,    

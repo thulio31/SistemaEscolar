@@ -6,6 +6,7 @@ using Aluno._03Entidades;
 using Escola._03Entidades.DTO;
 using Escola._03Entidades;
 using Escola._01Services;
+using Escola._01Services.Interfaces;
 
 namespace Api.Escolas.Controllers
 {
@@ -14,7 +15,7 @@ namespace Api.Escolas.Controllers
     [Route("[controller]")] //DataNotation
     public class FuncionarioController : ControllerBase
     {
-        private readonly FuncionarioService _service;
+        private readonly IFuncionarioService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
         public FuncionarioController(IMapper mapper, IConfiguration configuration)
