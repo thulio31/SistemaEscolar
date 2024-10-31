@@ -13,11 +13,11 @@ namespace Escola._01Services
 {
     public class FuncionarioService : IFuncionarioService
     {
-        public IFuncionarioRepository repository { get; set; }
+        public readonly IFuncionarioRepository repository;
 
-        public FuncionarioService(string StringConnection)
+        public FuncionarioService(IFuncionarioRepository _repository)
         {
-            repository = new FuncionariosRepository(StringConnection);
+            repository = _repository;
         }
 
         public void Adicionar(Funcionarios funcionario)

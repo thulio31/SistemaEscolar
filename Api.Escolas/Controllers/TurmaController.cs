@@ -16,11 +16,11 @@ namespace EscolaAPI.Controllers
         private readonly ITurmaService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
-        public TurmaController(IMapper mapper, IConfiguration configuration)
+        public TurmaController(IMapper mapper, IConfiguration configuration, ITurmaService service )
         {
             string _connectionString = configuration.GetConnectionString("DefaultConnection");//Passando a connection para uma nova string
             _mapper = mapper;
-            _service = new TurmaService(_connectionString);
+            _service = service;
         }
         [HttpGet("Listar-Turma")]// Rota (EndPoint)
         public List<Turma> ListarTurmas()

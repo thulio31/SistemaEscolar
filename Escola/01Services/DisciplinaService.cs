@@ -14,9 +14,9 @@ namespace Escola._01Services
     {
         public readonly IDisciplinaRepository repository;
 
-        public DisciplinaService(string StringConnection)
+        public DisciplinaService(IDisciplinaRepository _repository)
         {
-            repository = new DisciplinaRepository(StringConnection);
+            repository = _repository;
         }
 
         public void Adicionar(Disciplina disciplina)

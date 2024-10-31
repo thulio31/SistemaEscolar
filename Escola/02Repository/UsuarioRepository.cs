@@ -1,6 +1,7 @@
 ﻿using Core.Entidades;
 using Dapper.Contrib.Extensions;
 using Escola._02Repository.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System.Data.SQLite;
 
 namespace TrabalhoFinal._02_Repository;
@@ -8,9 +9,9 @@ namespace TrabalhoFinal._02_Repository;
 public class UsuarioRepository : IUsuarioRepository
 {
     private readonly string ConnectionString;
-    public UsuarioRepository(string connectioString)
+    public UsuarioRepository(IConfiguration config)
     {
-        ConnectionString = connectioString;
+        ConnectionString = config.GetConnectionString("DefaultConnection");
     }
     public void Adicionar(Usuario usuario)
     {

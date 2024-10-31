@@ -7,11 +7,11 @@ namespace Aluno._01Services
 {
     public class AlunoService : IAlunoService
     {
-        public IAlunoRepository repository { get; set; }
+        public readonly IAlunoRepository repository;
 
-        public AlunoService(string StringConnection)
+        public AlunoService(IAlunoRepository _repository)
         {
-            repository = new AlunoRepository(StringConnection);
+            repository = _repository;
         }
 
         public void Adicionar(Alunos aluno)

@@ -16,11 +16,11 @@ namespace EscolaAPI.Controllers
         private readonly IAlunoService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
-        public AlunosController(IMapper mapper, IConfiguration configuration)
+        public AlunosController(IMapper mapper, IConfiguration configuration, IAlunoService service )
         {
             string _connectionString = configuration.GetConnectionString("DefaultConnection");//Passando a connection para uma nova string
             _mapper = mapper;
-            _service = new AlunoService(_connectionString);
+            _service = service;
         }
         [HttpGet("Listar-Alunos")]// Rota (EndPoint)
         public List<Alunos> ListarAlunos()

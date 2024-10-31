@@ -8,10 +8,10 @@ namespace TrabalhoFinal._01_Services;
 
 public class UsuarioService : IUsuarioService
 {
-    public IUsuarioRepository repository { get; set; }
-    public UsuarioService(string _config)
+    public readonly IUsuarioRepository repository;
+    public UsuarioService(IUsuarioRepository _repository)
     {
-        repository = new UsuarioRepository(_config);
+        repository = _repository;
     }
     public void Adicionar(Usuario usuario)
     {

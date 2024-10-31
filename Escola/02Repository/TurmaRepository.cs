@@ -3,8 +3,10 @@ using AutoMapper;
 using Dapper;
 using Dapper.Contrib.Extensions;
 using Escola._02Repository.Interfaces;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -17,10 +19,10 @@ namespace Aluno._02Repository
         public readonly string _connectionString; //Variável de connection string a ser preenchida
         //private readonly IMapper _mapper; //criando o mapper a ser preenchidoIMapper mapper,
 
-        public TurmaRepository( string StringConnection) //Responsavel por preencher a connection string
+        public TurmaRepository(IConfiguration configuration) //Responsavel por preencher a connection string
         {
             //_mapper = mapper;
-            _connectionString = StringConnection;
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Turma turma)

@@ -12,11 +12,11 @@ namespace Escola._01Services
 {
     public class NotasService : INotasService
     {
-        public INotaRepository repository { get; set; }
+        public readonly INotaRepository repository;
 
-        public NotasService(string StringConnection)
+        public NotasService(INotaRepository _repository)
         {
-            repository = new NotaRepository(StringConnection);
+            repository = _repository;
         }
 
         public void Adicionar(Notas notas)

@@ -18,11 +18,11 @@ namespace Api.Escolas.Controllers
         private readonly IFuncionarioService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
-        public FuncionarioController(IMapper mapper, IConfiguration configuration)
+        public FuncionarioController(IMapper mapper, IConfiguration configuration, IFuncionarioService service )
         {
             string _connectionString = configuration.GetConnectionString("DefaultConnection");//Passando a connection para uma nova string
             _mapper = mapper;
-            _service = new FuncionarioService(_connectionString);
+            _service = service;
         }
         [HttpGet("Listar-Funcionarios")]// Rota (EndPoint)
         public List<Funcionarios> ListarFuncionarios()

@@ -18,11 +18,11 @@ namespace Api.Escolas.Controllers
         private readonly INotasService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
-        public NotasController(IMapper mapper, IConfiguration configuration)
+        public NotasController(IMapper mapper, IConfiguration configuration, INotasService service)
         {
             string _connectionString = configuration.GetConnectionString("DefaultConnection");//Passando a connection para uma nova string
             _mapper = mapper;
-            _service = new NotasService(_connectionString);
+            _service = service;
         }
         [HttpGet("Listar-Notas")]// Rota (EndPoint)
         public List<Notas> ListarNotas()

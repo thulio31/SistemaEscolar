@@ -2,8 +2,10 @@
 using Dapper.Contrib.Extensions;
 using Escola._02Repository.Interfaces;
 using Escola._03Entidades;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SQLite;
 using System.Linq;
 using System.Text;
@@ -16,10 +18,10 @@ namespace Escola._02Repository
         public readonly string _connectionString; //Variável de connection string a ser preenchida
         //private readonly IMapper _mapper; //criando o mapper a ser preenchidoIMapper mapper,
 
-        public NotaRepository(string StringConnection) //Responsavel por preencher a connection string
+        public NotaRepository(IConfiguration configuration) //Responsavel por preencher a connection string
         {
             //_mapper = mapper;
-            _connectionString = StringConnection;
+            _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
         public void Adicionar(Notas notas)

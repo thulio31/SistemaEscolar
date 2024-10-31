@@ -19,11 +19,11 @@ namespace Api.Escolas.Controllers
         private readonly IDisciplinaService _service;
         private readonly IMapper _mapper; //criando o mapper a ser preenchido
 
-        public DisciplinaController(IMapper mapper, IConfiguration configuration)
+        public DisciplinaController(IMapper mapper, IConfiguration configuration, IDisciplinaService service)
         {
             string _connectionString = configuration.GetConnectionString("DefaultConnection");//Passando a connection para uma nova string
             _mapper = mapper;
-            _service = new DisciplinaService(_connectionString);
+            _service = service;
         }
         [HttpGet("Listar-Disciplina")]// Rota (EndPoint)
         public List<Disciplina> ListarDisciplina()

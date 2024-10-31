@@ -12,11 +12,11 @@ namespace Aluno._01Services
 {
     public class TurmaService : ITurmaService
     {
-        public ITurmaRepository repository { get; set; }
+        public readonly ITurmaRepository repository;
 
-        public TurmaService(string StringConnection)
+        public TurmaService(ITurmaRepository _repository)
         {
-            repository = new TurmaRepository(StringConnection);
+            repository = _repository;
         }
 
         public void Adicionar(Turma turma)
