@@ -40,6 +40,7 @@ namespace FrontEndEscola
                         Usuario usuario = CriarUsuario();
                         _usuarioUC.CadastrarUsuario(usuario);
                         Console.WriteLine("Usuário cadastrado com sucesso");
+                        
                     }
                     else if (resposta == 3)
                     {
@@ -53,7 +54,7 @@ namespace FrontEndEscola
                 else
                 {
 
-                    IdentificarUsuario();
+                    ExibirMenuPrincipal();
                 }
             }
         }
@@ -106,6 +107,11 @@ namespace FrontEndEscola
             Console.WriteLine("3 - Realizar uma compra");
             Console.WriteLine("Qual operação deseja realizar?");
             int resposta = int.Parse(Console.ReadLine());
+
+            if(resposta == 1)
+            {
+                IdentificarUsuario();
+            }
 
         }
 
