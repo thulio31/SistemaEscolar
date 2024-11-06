@@ -28,18 +28,21 @@ namespace FrontEnd
             _usuarioUC = new UsuarioUC(cliente);
         }
        
-        public void ExibirMenuAluno()
+        public void ExibirMenuAluno( Usuario usuario = null)
         {
-            int resposta = -1;
-
-            
+            if (usuario == null) 
+            {
+                UsuarioLogado = usuario;
+            }
+                        
                 //1 boletim == recibo 
                 //olhar nota por disciplina
+
                 Console.WriteLine(
                       "1 - Ver Boletim " +
                     "\n2 - Ver Turma"
                     );
-                resposta = int.Parse(Console.ReadLine());
+            int resposta = int.Parse(Console.ReadLine());
                 
             if(resposta == 1)
             {

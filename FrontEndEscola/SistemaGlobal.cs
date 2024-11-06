@@ -50,13 +50,11 @@ namespace FrontEndEscola
                         }
                     }
                 }
-                else
-                {
-
-                    IdentificarUsuario();
-                }
+               
             }
         }
+
+
         public int ExibirLogin()
         {
             Console.WriteLine("--------- LOGIN ---------");
@@ -88,16 +86,18 @@ namespace FrontEndEscola
             string senha = Console.ReadLine();
             UsuarioLoginDTO usuDTO = new UsuarioLoginDTO
             {
-                Email = email,
+                Email = email,  
                 Senha = senha,
 
             };
             Usuario usuario = _usuarioUC.FazerLogin(usuDTO);
+            UsuarioLogado = usuario;
+            IdentificarUsuario(usuario);
             if (usuario == null)
             {
                 Console.WriteLine("Usuário ou senha inválidos!!!");
             }
-            UsuarioLogado = usuario;
+            
         }
         public void ExibirMenuPrincipal()
         {
@@ -109,15 +109,17 @@ namespace FrontEndEscola
 
         }
 
-        public void IdentificarUsuario()
+        public void IdentificarUsuario(Usuario usuario)
         {
-            if (UsuarioLogado.Tipo == 1)
+            if (usuario.Tipo == 1)
             {
-                _sistemaFuncionario.ExibirMenuFuncionario();  
+                _sistemaFuncionario.ExibirMenuFuncionario(usuario);  
+                //Console.WriteLine("teste 1");
             }
-            else if (UsuarioLogado.Tipo == 2)
+            else if (usuario.Tipo == 2)
             {
                 _sistemaEstudante.ExibirMenuAluno();
+                //Console.WriteLine("teste 2");
             }
             else
             {
