@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FrontEndEscola.Models.DTOs
 {
-    public class AlunosDTO
+    public class AlunosDTO  
     {
         
         public string Nome { get; set; }
