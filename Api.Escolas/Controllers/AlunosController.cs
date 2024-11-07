@@ -22,11 +22,23 @@ namespace EscolaAPI.Controllers
             _mapper = mapper;
             _service = service;
         }
+        /// <summary>
+        /// endpoint para listar todos os alunos do banco de dados
+        /// </summary>
+        /// <returns></returns>
+                     
+
         [HttpGet("Listar-Alunos")]// Rota (EndPoint)
         public List<Alunos> ListarAlunos()
         {
             return _service.Listar();
         }
+
+        /// <summary>
+        /// endpoint para adicionar um aluno novo no banco de dados
+        /// </summary>
+        /// <returns></returns>
+        
         [HttpPost("Adicionar-dapper-contrib")]// Rota (EndPoint)
         public void AdicionarContrib(CreateAlunoDTO alDto) //pegando a dto
         {
@@ -39,7 +51,12 @@ namespace EscolaAPI.Controllers
             alu.Turma = alDto.Turma;
             alu.IdFuncionarioEncarregado = alDto.IdFuncionarioEncarregado;
             _service.Adicionar(alu);
-        } 
+        }
+
+        /// <summary>
+        /// endpoint para listar todos os alunos do banco de dados
+        /// </summary>
+        /// <returns></returns>
 
         [HttpGet("Buscar-Alunos")]
         public Alunos BuscarAlunos(int id)

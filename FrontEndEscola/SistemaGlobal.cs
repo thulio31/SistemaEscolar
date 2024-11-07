@@ -1,4 +1,6 @@
-﻿using FrontEnd;
+﻿using Aluno._03Entidades;
+using Escola._03Entidades;
+using FrontEnd;
 using FrontEnd.Models;
 using FrontEnd.UseCases;
 using System;
@@ -110,7 +112,7 @@ namespace FrontEndEscola
 
             if(resposta == 1)
             {
-                IdentificarUsuario();
+                //IdentificarUsuario();
             }
 
         }
@@ -118,17 +120,19 @@ namespace FrontEndEscola
         public void IdentificarUsuario(Usuario usuario)
         {
             if (usuario.Tipo == 1)
-            {
+            { 
                 _sistemaFuncionario.ExibirMenuFuncionario(usuario);  
                 //Console.WriteLine("teste 1");
             }
             else if (usuario.Tipo == 2)
             {
+                Alunos a = new Alunos();
                 _sistemaEstudante.ExibirMenuAluno();
                 //Console.WriteLine("teste 2");
             }
             else
             {
+                Console.WriteLine(usuario.Tipo); //Passando 0, em nenhum momento está inserindo outro valor
                 Console.WriteLine("Tipo de usuário não reconhecido!");
             }
         }
