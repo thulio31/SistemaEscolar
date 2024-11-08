@@ -25,41 +25,116 @@ namespace Api.Escolas.Controllers
             _mapper = mapper;
             _service = service;
         }
+
+
+        /// <summary>
+        /// endpoint para listar todos as disciplina do banco de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("Listar-Disciplina")]// Rota (EndPoint)
         public List<Disciplina> ListarDisciplina()
         {
-            return _service.Listar();
-        }
-        [HttpPost("Adicionar-dapper-contrib")]// Rota (EndPoint)
-        public void AdicionarContrib(CreateDisciplinaDTO discDto) //pegando a dto
-        {
-            Disciplina disc = new Disciplina(); //pegando de um objeto e jogando para outro objeto
-            disc.nome = discDto.nome; //propriedades para DTO
-            disc.cargahoraria = discDto.cargahoraria;
-            disc.ementa = discDto.ementa;
-            disc.codigo = discDto.codigo;
-            disc.semestre = discDto.semestre;
-            disc.IdFuncionarioEncarregado = discDto.IdFuncionarioEncarregado;
-            disc.IdAluno = discDto.IdAluno;
-            _service.Adicionar(disc);
+            
+            try
+            {
+                return _service.Listar();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Erro ao listar as disciplinas");
+            }
+
         }
 
+
+        /// /// <summary>
+        /// endpoint para adicionar uma disciplina novo no banco de dados
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("Adicionar-disciplina")]// Rota (EndPoint)
+        public IActionResult AdicionarContrib(CreateDisciplinaDTO discDto) //pegando a dto
+        {
+            try
+            {
+                Disciplina disc = new Disciplina(); //pegando de um objeto e jogando para outro objeto
+                disc.nome = discDto.nome; //propriedades para DTO
+                disc.cargahoraria = discDto.cargahoraria;
+                disc.ementa = discDto.ementa;
+                disc.codigo = discDto.codigo;
+                disc.semestre = discDto.semestre;
+                disc.IdFuncionarioEncarregado = discDto.IdFuncionarioEncarregado;
+                disc.IdAluno = discDto.IdAluno;
+                _service.Adicionar(disc);
+
+                return Ok();
+            }
+            catch (Exception erro)//
+            {
+                return BadRequest($"Ocorreu um erro ao adicionar a disciplina," +
+                    $"\n {erro.Message}");
+            }
+            
+        }
+
+
+
+        /// <summary>
+        /// endpoint para buscar uma disciplina por id
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("Buscar-Disciplina")]
         public Disciplina BuscarDisciplina(int id)
         {
-            return _service.BuscarDisciplinaPorId(id);
+            try
+            {
+                return _service.BuscarDisciplinaPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Erro ao buscar disciplina por id");
+            }
+            
         }
 
+        /// <summary>
+        /// endpoint para deletar uma disciplina no banco de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("Delete-Disciplina")]// Rota (EndPoint)
-        public void DeleteDisciplina(int id)
+        public IActionResult DeleteDisciplina(int id)
         {
-            _service.Remover(id);
+            try
+            {
+                _service.Remover(id);
+                return Ok();
+            }
+            catch (Exception erro )
+            {
+                return BadRequest($"Erro ao deletar disciplina {erro.Message}");
+            }
+            
         }
 
+        /// <summary>
+        /// endpoint para editar uma disciplina novo no banco de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("Editar-Disciplina")]// Rota (EndPoint)
-        public void EditarDisciplina(Disciplina disciplina)
+        public IActionResult EditarDisciplina(Disciplina disciplina)
         {
-            _service.Editar(disciplina);
+            try
+            {
+                _service.Editar(disciplina);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"Erro ao editar disciplina {erro.Message}");
+
+                
+            }
+            
         }
     }
 }
