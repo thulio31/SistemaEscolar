@@ -1,4 +1,6 @@
-﻿using FrontEnd;
+﻿using Aluno._03Entidades;
+using Escola._03Entidades;
+using FrontEnd;
 using FrontEnd.Models;
 using FrontEnd.UseCases;
 using System;
@@ -51,13 +53,11 @@ namespace FrontEndEscola
                         }
                     }
                 }
-                else
-                {
-
-                    ExibirMenuPrincipal();
-                }
+               
             }
         }
+
+
         public int ExibirLogin()
         {
             Console.WriteLine("--------- LOGIN ---------");
@@ -91,17 +91,19 @@ namespace FrontEndEscola
             int tipo = int.Parse(Console.ReadLine());
             UsuarioLoginDTO usuDTO = new UsuarioLoginDTO
             {
-                Email = email,
+                Email = email,  
                 Senha = senha,
                 Tipo = tipo,
 
             };
             Usuario usuario = _usuarioUC.FazerLogin(usuDTO);
+            UsuarioLogado = usuario;
+            IdentificarUsuario(usuario);
             if (usuario == null)
             {
                 Console.WriteLine("Usuário ou senha inválidos!!!");
             }
-            UsuarioLogado = usuario;
+            
         }
         public void ExibirMenuPrincipal()
         {
@@ -113,23 +115,27 @@ namespace FrontEndEscola
 
             if(resposta == 1)
             {
-                IdentificarUsuario();
+                //IdentificarUsuario();
             }
 
         }
 
-        public void IdentificarUsuario()
+        public void IdentificarUsuario(Usuario usuario)
         {
-            if (UsuarioLogado.Tipo == 1)
-            {
-                _sistemaFuncionario.ExibirMenuFuncionario();  
+            if (usuario.Tipo == 1)
+            { 
+                _sistemaFuncionario.ExibirMenuFuncionario(usuario);  
+                //Console.WriteLine("teste 1");
             }
-            else if (UsuarioLogado.Tipo == 2)
+            else if (usuario.Tipo == 2)
             {
+                Alunos a = new Alunos();
                 _sistemaEstudante.ExibirMenuAluno();
+                //Console.WriteLine("teste 2");
             }
             else
             {
+                Console.WriteLine(usuario.Tipo); //Passando 0, em nenhum momento está inserindo outro valor
                 Console.WriteLine("Tipo de usuário não reconhecido!");
             }
         }

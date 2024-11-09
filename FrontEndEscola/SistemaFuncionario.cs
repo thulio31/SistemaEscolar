@@ -12,20 +12,24 @@ namespace FrontEnd
     {
         private static Usuario UsuarioLogado { get; set; }
         private readonly UsuarioUC _usuarioUC;
-        public SistemaFuncionario (HttpClient cliente ) 
+        public SistemaFuncionario(HttpClient cliente)
         {
             _usuarioUC = new UsuarioUC(cliente);
         }
-      
-        public void ExibirMenuFuncionario()
+
+        public void ExibirMenuFuncionario(Usuario usuario = null)
         {
+            if (UsuarioLogado == null)
+            {
+                UsuarioLogado = usuario;
+            }
             Console.WriteLine("- - - - Escolha as opções - - - -" +
                 "\n1 - Ver Turma" +
                 "\n2 - Ver Alunos " +
                 "\n3 - Ver Notas" +
                 "\n4 - Ver Disciplinas");//salario 
             int resposta = int.Parse(Console.ReadLine());
-            if(resposta == 1)//Turma
+            if (resposta == 1)//Turma
             {
                 //editar excluir adicionar
             }

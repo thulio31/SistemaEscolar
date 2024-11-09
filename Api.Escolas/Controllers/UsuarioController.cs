@@ -2,6 +2,7 @@
 using Core._03_Entidades.DTO.Usuarios;
 using Core.Entidades;
 using Escola._01Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using TrabalhoFinal._01_Services;
 
@@ -20,9 +21,10 @@ public class UsuarioController : ControllerBase
         _mapper = mapper;
     }
     [HttpPost("adicionar-usuario")]
-    public void AdicionarAluno(Usuario usuarioDTO)
+    public Usuario AdicionarAluno(Usuario usuario)
     {
-        _service.Adicionar(usuarioDTO);
+        _service.Adicionar(usuario);
+        return usuario;
     }
     [HttpPost("fazer-login")]
     public Usuario FazerLogin(UsuarioLoginDTO usuarioLogin)

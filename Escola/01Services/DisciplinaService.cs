@@ -21,6 +21,7 @@ namespace Escola._01Services
 
         public void Adicionar(Disciplina disciplina)
         {
+                      
             repository.Adicionar(disciplina);
         }
 

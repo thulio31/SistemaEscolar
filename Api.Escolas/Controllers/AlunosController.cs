@@ -22,24 +22,62 @@ namespace EscolaAPI.Controllers
             _mapper = mapper;
             _service = service;
         }
+        /// <summary>
+        /// endpoint para listar todos os alunos do banco de dados
+        /// </summary>
+        /// <returns></returns>
+                     
+
         [HttpGet("Listar-Alunos")]// Rota (EndPoint)
         public List<Alunos> ListarAlunos()
         {
-            return _service.Listar();
+            try
+            {
+                return _service.Listar();
+                
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Errro ao listar");
+            }
+            
         }
+
+        /// <summary>
+        /// endpoint para adicionar um aluno novo no banco de dados
+        /// </summary>
+        /// <returns></returns>
+        
         [HttpPost("Adicionar-dapper-contrib")]// Rota (EndPoint)
-        public void AdicionarContrib(CreateAlunoDTO alDto) //pegando a dto
+        public IActionResult AdicionarContrib(CreateAlunoDTO alDto) //pegando a dto
         {
-            Alunos alu = new Alunos(); //pegando de um objeto e jogando para outro objeto
-            alu.Nome = alDto.Nome; //propriedades para DTO
-            alu.Idade = alDto.Idade;
-            alu.Matricula = alDto.Matricula;
-            alu.Telefone = alDto.Telefone;
-            alu.Serie = alDto.Serie;
-            alu.Turma = alDto.Turma;
-            alu.IdFuncionarioEncarregado = alDto.IdFuncionarioEncarregado;
-            _service.Adicionar(alu);
-        } 
+            
+            try
+            {
+                Alunos alu = new Alunos(); //pegando de um objeto e jogando para outro objeto
+                alu.Nome = alDto.Nome; //propriedades para DTO
+                alu.Idade = alDto.Idade;
+                alu.Matricula = alDto.Matricula;
+                alu.Telefone = alDto.Telefone;
+                alu.Serie = alDto.Serie;
+                alu.Turma = alDto.Turma;
+                alu.IdFuncionarioEncarregado = alDto.IdFuncionarioEncarregado;
+                _service.Adicionar(alu);
+
+                return Ok();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// endpoint para buscar um aluno por id
+        /// </summary>
+        /// <returns></returns>
 
         [HttpGet("Buscar-Alunos")]
         public Alunos BuscarAlunos(int id)
@@ -47,12 +85,20 @@ namespace EscolaAPI.Controllers
             return _service.BuscarAlunosPorId(id);
         }
 
+        /// <summary>
+        /// endpoint para deletar um aluno no banco de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("Delete-Alunos")]// Rota (EndPoint)
         public void DeleteAlunos(int id)
         {
             _service.Remover(id);
         }
 
+        /// <summary>
+        /// endpoint para editar um aluno novo no banco de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("Editar-Alunos")]// Rota (EndPoint)
         public void EditarAlunos(Alunos aluno)
         {
