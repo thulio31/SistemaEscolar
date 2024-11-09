@@ -87,10 +87,13 @@ namespace FrontEndEscola
             string email = Console.ReadLine();
             Console.WriteLine("Digite sua senha: ");
             string senha = Console.ReadLine();
+            Console.WriteLine("Digite seu tipo de usuario:\n1 - Funcionario\n2 - Aluno ");
+            int tipo = int.Parse(Console.ReadLine());
             UsuarioLoginDTO usuDTO = new UsuarioLoginDTO
             {
                 Email = email,
                 Senha = senha,
+                Tipo = tipo,
 
             };
             Usuario usuario = _usuarioUC.FazerLogin(usuDTO);
