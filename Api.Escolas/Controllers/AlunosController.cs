@@ -49,7 +49,7 @@ namespace EscolaAPI.Controllers
         /// </summary>
         /// <returns></returns>
         
-        [HttpPost("Adicionar-dapper-contrib")]// Rota (EndPoint)
+        [HttpPost("Adicionar-alunos")]// Rota (EndPoint)
         public IActionResult AdicionarContrib(CreateAlunoDTO alDto) //pegando a dto
         {
             

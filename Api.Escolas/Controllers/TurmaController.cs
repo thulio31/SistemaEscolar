@@ -22,41 +22,114 @@ namespace EscolaAPI.Controllers
             _mapper = mapper;
             _service = service;
         }
+
+        /// <summary>
+        /// endpoint que lista todas as turmas do banco de dadosa
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("Listar-Turma")]// Rota (EndPoint)
         public List<Turma> ListarTurmas()
         {
-            return _service.Listar();
+            try
+            {
+                return _service.Listar();
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("erro ao listar");
+            }
+            
         }
-        [HttpPost("Adicionar-dapper-contrib")]// Rota (EndPoint)
-        public void AdicionarContrib(CreateTurmaDTO turDto) //pegando a dto
+
+        /// <summary>
+        /// endpoit que adiciona uma turma no banco de dados
+        /// </summary>
+        /// <param name="turDto"></param>
+        [HttpPost("Adicionar-turma")]// Rota (EndPoint)
+        public IActionResult AdicionarContrib(CreateTurmaDTO turDto) //pegando a dto
         {
-            Turma turm = new Turma(); //pegando de um objeto e jogando para outro objeto
-            turm.Nome = turDto.Nome;//propriedades para DTO
-            turm.Alunos = turDto.Alunos;
-            turm.Vagas = turDto.Vagas;
-            turm.CargaHoraria = turDto.CargaHoraria;
-            turm.CodigoTurma = turDto.CodigoTurma;
-            turm.Status = turDto.Status;
-            turm.IdFuncionarioEncarregado = turDto.IdFuncionarioEncarregado;
-            turm.IdAluno = turDto.IdAluno;
-            _service.Adicionar(turm);
+            try
+            {
+                Turma turm = new Turma(); //pegando de um objeto e jogando para outro objeto
+                turm.Nome = turDto.Nome;//propriedades para DTO
+                turm.Alunos = turDto.Alunos;
+                turm.Vagas = turDto.Vagas;
+                turm.CargaHoraria = turDto.CargaHoraria;
+                turm.CodigoTurma = turDto.CodigoTurma;
+                turm.Status = turDto.Status;
+                turm.IdFuncionarioEncarregado = turDto.IdFuncionarioEncarregado;
+                turm.IdAluno = turDto.IdAluno;
+                _service.Adicionar(turm);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest($"erro ao adicionar a turma {erro.Message}");
+            }
+            
         }
+
+        /// <summary>
+        /// endpoint para buscar uma turma por id inserido
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("Buscar-Turma")]
         public Turma BuscarTurma(int id)
         {
-            return _service.BuscarTurmaPorId(id);
+            try
+            {
+                return _service.BuscarTurmaPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("erro ao buscar");
+            }
+            
         }
 
+
+        /// <summary>
+        /// endpoint para deletar uma turma por id inserido
+        /// </summary>
+        /// <param name="id"></param>
         [HttpDelete("Delete-Turmas")]// Rota (EndPoint)
-        public void DeleteTurmas(int id)
+        public IActionResult DeleteTurmas(int id)
         {
-            _service.Remover(id);
+            try
+            {
+                _service.Remover(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest($"erro ao deletar {erro.Message}");
+            }
+            
         }
 
+        /// <summary>
+        /// endpoit para editar uma turma por id inserido
+        /// </summary>
+        /// <param name="turma"></param>
         [HttpPut("Editar-Turmas")]// Rota (EndPoint)
-        public void EditarTurmas(Turma turma)
+        public IActionResult EditarTurmas(Turma turma)
         {
-            _service.Editar(turma);
+            try
+            {
+                _service.Editar(turma);
+                return Ok();
+            }   
+            catch (Exception erro)
+            {
+
+                return BadRequest($"erro ao editar {erro.Message}");
+            }
+            
         }
     }
 }

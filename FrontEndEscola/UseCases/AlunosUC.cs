@@ -19,9 +19,9 @@ namespace FrontEndEscola.UseCases
         {
             return _client.GetFromJsonAsync<List<Alunos>>("Alunos/Listar-Alunos").Result;
         }
-        public void CadastrarNotas(Alunos usuario)
+        public void CadastrarAlunos(Alunos usuario)
         {
-            HttpResponseMessage response = _client.PostAsJsonAsync("Alunos/Adicionar-dapper-contrib", usuario).Result;
+            HttpResponseMessage response = _client.PostAsJsonAsync("Alunos/Adicionar-alunos", usuario).Result;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace FrontEndEscola.UseCases
         }
         public void CadastrarNotas(Notas usuario)
         {
-            HttpResponseMessage response = _client.PostAsJsonAsync("Notas/Adicionar-dapper-contrib", usuario).Result;
+            HttpResponseMessage response = _client.PostAsJsonAsync("Notas/Adicionar-notas", usuario).Result;
         }
     }
 }
