@@ -26,7 +26,6 @@ namespace Api.Escolas.Controllers
             _service = service;
         }
 
-
         /// <summary>
         /// endpoint para listar todos as disciplina do banco de dados
         /// </summary>
@@ -45,7 +44,6 @@ namespace Api.Escolas.Controllers
             }
 
         }
-
 
         /// /// <summary>
         /// endpoint para adicionar uma disciplina novo no banco de dados
@@ -76,14 +74,12 @@ namespace Api.Escolas.Controllers
             
         }
 
-
-
         /// <summary>
         /// endpoint para buscar uma disciplina por id
         /// </summary>
         /// <returns></returns>
         [HttpGet("Buscar-Disciplina")]
-        public Disciplina BuscarDisciplina(int id)
+        public Disciplina BuscarDisciplina(int id)  
         {
             try
             {
@@ -116,10 +112,10 @@ namespace Api.Escolas.Controllers
             
         }
 
-        /// <summary>
+       /// <summary>
         /// endpoint para editar uma disciplina novo no banco de dados
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns> 
         [HttpPut("Editar-Disciplina")]// Rota (EndPoint)
         public IActionResult EditarDisciplina(Disciplina disciplina)
         {

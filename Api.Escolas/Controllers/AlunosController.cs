@@ -67,10 +67,10 @@ namespace EscolaAPI.Controllers
 
                 return Ok();
             }
-            catch (Exception)
+            catch (Exception erro)
             {
 
-                throw;
+                return BadRequest($"erro ao adicionar{erro.Message}");
             }
         }
 
@@ -82,7 +82,16 @@ namespace EscolaAPI.Controllers
         [HttpGet("Buscar-Alunos")]
         public Alunos BuscarAlunos(int id)
         {
-            return _service.BuscarAlunosPorId(id);
+            try
+            {
+                return _service.BuscarAlunosPorId(id);
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("erro ao buscar");
+            }
+            
         }
 
         /// <summary>
@@ -90,9 +99,18 @@ namespace EscolaAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpDelete("Delete-Alunos")]// Rota (EndPoint)
-        public void DeleteAlunos(int id)
+        public IActionResult DeleteAlunos(int id)
         {
-            _service.Remover(id);
+            try
+            {
+                _service.Remover(id);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+
+                return BadRequest($"erro ao deletar {erro.Message}");
+            }
         }
 
         /// <summary>
@@ -100,9 +118,17 @@ namespace EscolaAPI.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPut("Editar-Alunos")]// Rota (EndPoint)
-        public void EditarAlunos(Alunos aluno)
+        public IActionResult EditarAlunos(Alunos aluno)
         {
-            _service.Editar(aluno);
+            try
+            {
+                _service.Editar(aluno);
+                return Ok();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest($"erro ao editar {erro.Message}");
+            }
         }
     }
 }
