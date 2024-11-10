@@ -56,7 +56,6 @@ builder.Services.AddScoped<ITurmaRepository, TurmaRepository>();
 builder.Services.AddScoped<ITurmaService, TurmaService>();
 
 //Usuario
-
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
