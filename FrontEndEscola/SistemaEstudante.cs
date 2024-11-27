@@ -19,6 +19,7 @@ namespace FrontEnd
     {
         private static Usuario UsuarioLogado;
         private readonly UsuarioUC _usuarioUC;
+        private readonly AlunosUC _alunosUC;
         private readonly NotaRepository notaRepository; 
         private readonly NotasUc _notasUC;
         private Alunos alunos;
@@ -26,6 +27,7 @@ namespace FrontEnd
         public SistemaEstudante(HttpClient cliente)
         {
             _usuarioUC = new UsuarioUC(cliente);
+            _alunosUC = new AlunosUC(cliente);
         }
        
         public void ExibirMenuAluno( Usuario usuario = null)
@@ -47,7 +49,9 @@ namespace FrontEnd
                 
             if(resposta == 1)
             {
-                CadastrarAluno();
+                Alunos aluno = CadastrarAluno();
+                //_alunosUC.CadastrarAlunos(aluno);
+                Console.WriteLine("Usuário cadastrado com sucesso");
             }
            
             else if (resposta == 2)

@@ -19,9 +19,9 @@ namespace FrontEndEscola.UseCases
         {
             return _client.GetFromJsonAsync<List<Alunos>>("Alunos/Listar-Alunos").Result;
         }
-        public void CadastrarAlunos(Alunos usuario)
+        public void CadastrarAlunos(Alunos alunos)
         {
-            HttpResponseMessage response = _client.PostAsJsonAsync("Alunos/Adicionar-alunos", usuario).Result;
+            HttpResponseMessage response = _client.PostAsJsonAsync("Alunos/Adicionar-alunos", alunos).Result;
         }
     }
 }
