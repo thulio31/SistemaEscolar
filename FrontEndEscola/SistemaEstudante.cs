@@ -50,7 +50,7 @@ namespace FrontEnd
             if(resposta == 1)
             {
                 Alunos aluno = CadastrarAluno();
-                //_alunosUC.CadastrarAlunos(aluno);
+                _alunosUC.CadastrarAlunos(aluno);
                 Console.WriteLine("Usuário cadastrado com sucesso");
             }
            
