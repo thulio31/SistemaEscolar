@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,6 +23,10 @@ namespace FrontEnd
         private readonly AlunosUC _alunosUC;
         private readonly NotaRepository notaRepository; 
         private readonly NotasUc _notasUC;
+        private readonly TurmaUC _turmasUC;
+
+
+        private Turma turma;
         private Alunos alunos;
 
         public SistemaEstudante(HttpClient cliente)
@@ -29,56 +34,52 @@ namespace FrontEnd
             _usuarioUC = new UsuarioUC(cliente);
             _alunosUC = new AlunosUC(cliente);
         }
-       
+
+        public void IniciarSistema()
+        {
+            int resposta = -1;
+            while (resposta != 0)
+            {
+                if (UsuarioLogado == null)
+                {
+                     ExibirMenuAluno();
+
+                    if (resposta == 1)
+                    {
+                        FrontEndEscola.Models.Alunos aluno = CadastrarAluno();
+                        _alunosUC.CadastrarAlunos(aluno);
+                        Console.WriteLine("Usuário cadastrado com sucesso");
+                    }
+                    else if (resposta == 2)
+                    {
+                       
+
+                    }
+                    else if (resposta == 3)
+                    {
+                        ExibirBoletim();
+                    }
+                }
+
+            }
+        }
+
         public void ExibirMenuAluno( Usuario usuario = null)
         {
             if (usuario == null) 
             {
                 UsuarioLogado = usuario;
             }
-                        
-                //1 boletim == recibo 
-                //olhar nota por disciplina
 
-                Console.WriteLine(
-                      "1 - Se cadastrar como aluno " +
-                    "\n2 - Ver Turma" +
-                    "\n3 - Olhar Boletim"
-                    );
+            Console.WriteLine("=-=-=-=-=-=-=- Menu =-=-=-=-=-=-=-");
+            Console.WriteLine("1 - Se cadastrar como aluno ");
+            Console.WriteLine("2 - Ver Turma");
+            Console.WriteLine("3 - Olhar Boletim");       
             int resposta = int.Parse(Console.ReadLine());
-                
-            if(resposta == 1)
-            {
-                Alunos aluno = CadastrarAluno();
-                _alunosUC.CadastrarAlunos(aluno);
-                Console.WriteLine("Usuário cadastrado com sucesso");
-            }
-           
-            else if (resposta == 2)
-            {
-                //listar alunos por turma
-                Console.WriteLine("1 - Ver Horarios");
-                resposta = int.Parse(Console.ReadLine());
-                if(resposta == 1)
-                {
-                    //ListarHorariosPorTurma();
-                    //Validaçao de horarios iguais
-                }               
-
-            }
-            else if (resposta == 3)
-            {
-                ExibirBoletim();
-            }
-
-            else
-            {
-                Console.WriteLine("Opção nao disponivel!!");
-                ExibirMenuAluno();
-            }
-
 
         }
+
+
         public Notas ListarNotaPorAluno(int idaluno)
         {
             Notas notas = notaRepository.BuscarNotasPorAluno(idaluno);
@@ -96,9 +97,23 @@ namespace FrontEnd
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         }
 
-        public Alunos CadastrarAluno()
+        public void ListarTurma()
         {
-            Alunos alunos = new Alunos();
+            List<Turma> tur = _turmasUC.ListarTurma();
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            Console.WriteLine($"Boletim da {turma.Nome} Id: {turma.Id}");
+            foreach (Turma turma in tur)
+            {
+                Console.WriteLine($"Disciplina: {turma.disciplinaId} - Nota: {turma.valor}");
+            }
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+        }
+
+
+
+        public FrontEndEscola.Models.Alunos CadastrarAluno()
+        {
+            FrontEndEscola.Models.Alunos alunos = new FrontEndEscola.Models.Alunos();
             Console.WriteLine("Digite seu nome: ");
             alunos.Nome = Console.ReadLine();
             Console.WriteLine("Digite sua idade: ");
