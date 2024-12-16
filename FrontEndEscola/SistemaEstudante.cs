@@ -52,8 +52,7 @@ namespace FrontEnd
                     }
                     else if (resposta == 2)
                     {
-                       
-
+                        ListarTurma();
                     }
                     else if (resposta == 3)
                     {
@@ -104,7 +103,7 @@ namespace FrontEnd
             Console.WriteLine($"Boletim da {turma.Nome} Id: {turma.Id}");
             foreach (Turma turma in tur)
             {
-                Console.WriteLine($"Disciplina: {turma.disciplinaId} - Nota: {turma.valor}");
+                Console.WriteLine($"Alunos: {turma.IdAluno} - Carga Horaria: {turma.CargaHoraria}");
             }
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         }
