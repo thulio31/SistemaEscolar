@@ -35,35 +35,43 @@ namespace FrontEnd
             _alunosUC = new AlunosUC(cliente);
         }
 
-        public void IniciarSistema()
+        public void IniciarSistemaEstudante()
         {
             int resposta = -1;
             while (resposta != 0)
             {
                 if (UsuarioLogado == null)
                 {
-                     ExibirMenuAluno();
+                     int respostaUsuario = ExibirMenuAluno();
 
-                    if (resposta == 1)
+                    if (respostaUsuario == 1)
                     {
                         FrontEndEscola.Models.Alunos aluno = CadastrarAluno();
                         _alunosUC.CadastrarAlunos(aluno);
                         Console.WriteLine("Usuário cadastrado com sucesso");
                     }
-                    else if (resposta == 2)
+                    else if (respostaUsuario == 2)
                     {
                         ListarTurma();
                     }
-                    else if (resposta == 3)
+                    else if (respostaUsuario == 3)
                     {
                         ExibirBoletim();
+                    }
+                    else if (respostaUsuario == 0)//Encerrar o loop
+                    {
+                        Console.WriteLine("Saindo do sistema...");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opção inválida! Tente novamente.");
                     }
                 }
 
             }
         }
 
-        public void ExibirMenuAluno( Usuario usuario = null)
+        public int ExibirMenuAluno( Usuario usuario = null)
         {
             if (usuario == null) 
             {
@@ -74,7 +82,8 @@ namespace FrontEnd
             Console.WriteLine("1 - Se cadastrar como aluno ");
             Console.WriteLine("2 - Ver Turma");
             Console.WriteLine("3 - Olhar Boletim");       
-            int resposta = int.Parse(Console.ReadLine());
+            Console.WriteLine("0 - Sair");       
+            return int.Parse(Console.ReadLine());
 
         }
 

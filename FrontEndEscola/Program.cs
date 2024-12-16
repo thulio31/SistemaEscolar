@@ -8,3 +8,7 @@ HttpClient cliente = new HttpClient
 };
 SistemaGlobal sistema = new SistemaGlobal(cliente);
 sistema.IniciarSistema();
+
+
+SistemaEstudante sistemaE = new SistemaEstudante(cliente);
+sistema.IniciarSistemaEstudante();
