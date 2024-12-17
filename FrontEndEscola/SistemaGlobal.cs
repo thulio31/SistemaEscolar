@@ -105,20 +105,7 @@ namespace FrontEndEscola
             }
             
         }
-        public void ExibirMenuPrincipal()
-        {
-            Console.WriteLine("1 - Listar Produtos");
-            Console.WriteLine("2 - Cadastrar Produto");
-            Console.WriteLine("3 - Realizar uma compra");
-            Console.WriteLine("Qual operação deseja realizar?");
-            int resposta = int.Parse(Console.ReadLine());
-
-            if(resposta == 1)
-            {
-                //IdentificarUsuario();
-            }
-
-        }
+      
 
         public void IdentificarUsuario(Usuario usuario)
         {
@@ -130,12 +117,16 @@ namespace FrontEndEscola
             else if (usuario.Tipo == 2)
             {
                 Alunos a = new Alunos();
-                _sistemaEstudante.ExibirMenuAluno();
-                //Console.WriteLine("teste 2");
+                int resposta = _sistemaEstudante.ExibirMenuAluno(usuario);
+
+                if (resposta == 1) 
+                {
+                    _sistemaEstudante.AdicionarAluno();
+                }
             }
             else
             {
-                Console.WriteLine(usuario.Tipo); //Passando 0, em nenhum momento está inserindo outro valor
+                Console.WriteLine(usuario.Tipo); 
                 Console.WriteLine("Tipo de usuário não reconhecido!");
             }
         }

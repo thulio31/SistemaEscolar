@@ -42,23 +42,23 @@ namespace FrontEnd
             {
                 if (UsuarioLogado == null)
                 {
-                     int respostaUsuario = ExibirMenuAluno();
+                      resposta = ExibirMenuAluno();
 
-                    if (respostaUsuario == 1)
+                    if (resposta == 1)
                     {
                         FrontEndEscola.Models.Alunos aluno = CadastrarAluno();
                         _alunosUC.CadastrarAlunos(aluno);
                         Console.WriteLine("Usuário cadastrado com sucesso");
                     }
-                    else if (respostaUsuario == 2)
+                    else if (resposta == 2)
                     {
                         ListarTurma();
                     }
-                    else if (respostaUsuario == 3)
+                    else if (resposta == 3)
                     {
                         ExibirBoletim();
                     }
-                    else if (respostaUsuario == 0)//Encerrar o loop
+                    else if (resposta == 0)//Encerrar o loop
                     {
                         Console.WriteLine("Saindo do sistema...");
                     }
@@ -71,6 +71,13 @@ namespace FrontEnd
             }
         }
 
+        public void AdicionarAluno()
+        {
+            FrontEndEscola.Models.Alunos aluno = CadastrarAluno();
+            _alunosUC.CadastrarAlunos(aluno);
+            Console.WriteLine("Usuário cadastrado com sucesso");
+        }
+
         public int ExibirMenuAluno( Usuario usuario = null)
         {
             if (usuario == null) 
@@ -78,7 +85,7 @@ namespace FrontEnd
                 UsuarioLogado = usuario;
             }
 
-            Console.WriteLine("=-=-=-=-=-=-=- Menu =-=-=-=-=-=-=-");
+            Console.WriteLine("=-=-=-=-=-=-=-= - Menu Aluno - =-=-=-=-=-=-=-=");
             Console.WriteLine("1 - Se cadastrar como aluno ");
             Console.WriteLine("2 - Ver Turma");
             Console.WriteLine("3 - Olhar Boletim");       

@@ -11,4 +11,4 @@ sistema.IniciarSistema();
 
 
 SistemaEstudante sistemaE = new SistemaEstudante(cliente);
-sistema.IniciarSistemaEstudante();
+sistemaE.IniciarSistemaEstudante();
