@@ -23,5 +23,9 @@ namespace FrontEndEscola.UseCases
         {
             HttpResponseMessage response = _client.PostAsJsonAsync("Alunos/Adicionar-alunos", alunos).Result;
         }
+        public Alunos AlunosPorId(int id)
+        {
+            return _client.GetFromJsonAsync<Alunos>($"Alunos/Buscar-Alunos?id={id}").Result;
+        }
     }
 }

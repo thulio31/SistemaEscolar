@@ -123,6 +123,18 @@ namespace FrontEndEscola
                 {
                     _sistemaEstudante.AdicionarAluno();
                 }
+                else if (resposta == 2)
+                {
+                    _sistemaEstudante.ListarTurma();
+                }
+                else if (resposta == 3)
+                {
+                    _sistemaEstudante.ExibirBoletim();
+                }
+                else if (resposta == 4)
+                {
+                    Console.WriteLine("Saindo do sistema...");
+                }
             }
             else
             {

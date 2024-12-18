@@ -31,6 +31,10 @@ namespace FrontEnd
 
         public SistemaEstudante(HttpClient cliente)
         {
+            _notasUC = new NotasUc(cliente);
+            _turmasUC = new TurmaUC(cliente);
+            alunos = new Alunos();
+            turma = new Turma();
             _usuarioUC = new UsuarioUC(cliente);
             _alunosUC = new AlunosUC(cliente);
         }
@@ -100,19 +104,22 @@ namespace FrontEnd
             Notas notas = notaRepository.BuscarNotasPorAluno(idaluno);
             return notas;
         }
-        public void ExibirBoletim()
+        public List<Notas> ExibirBoletim(int id)
         {
             List<Notas> nt = _notasUC.ListarNotas();
+            FrontEndEscola.Models.Alunos aluno = _alunosUC.AlunosPorId(id);
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-            Console.WriteLine($"Boletim do {alunos.Nome} Id: {alunos.Id}");
+            Console.WriteLine($"Boletim do {aluno.Nome} Id: {aluno.id}");
             foreach (Notas notas in nt)
             {
                 Console.WriteLine($"Disciplina: {notas.disciplinaId} - Nota: {notas.valor}");
-            }  
+            }
+            
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            return nt;
         }
 
-        public void ListarTurma()
+        public List<Turma> ListarTurma()
         {
             List<Turma> tur = _turmasUC.ListarTurma();
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
@@ -122,6 +129,7 @@ namespace FrontEnd
                 Console.WriteLine($"Alunos: {turma.IdAluno} - Carga Horaria: {turma.CargaHoraria}");
             }
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
+            return tur;
         }
 
 
