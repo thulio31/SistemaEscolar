@@ -12,3 +12,7 @@ sistema.IniciarSistema();
 
 SistemaEstudante sistemaE = new SistemaEstudante(cliente);
 sistemaE.IniciarSistemaEstudante();
+
+
+SistemaFuncionario sistemaF = new SistemaFuncionario(cliente);
+sistemaF.IniciarSistemaFuncionario();

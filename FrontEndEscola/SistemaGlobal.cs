@@ -111,7 +111,7 @@ namespace FrontEndEscola
         {
             if (usuario.Tipo == 1)
             { 
-                _sistemaFuncionario.ExibirMenuFuncionario(usuario);  
+                int resposta = _sistemaFuncionario.ExibirMenuFuncionario(usuario);  
                 //Console.WriteLine("teste 1");
             }
             else if (usuario.Tipo == 2)
@@ -129,7 +129,7 @@ namespace FrontEndEscola
                 }
                 else if (resposta == 3)
                 {
-                    _sistemaEstudante.ExibirBoletim();
+                    //_sistemaEstudante.ExibirBoletim();
                 }
                 else if (resposta == 4)
                 {

@@ -60,7 +60,7 @@ namespace FrontEnd
                     }
                     else if (resposta == 3)
                     {
-                        ExibirBoletim();
+                        //ExibirBoletim();
                     }
                     else if (resposta == 0)//Encerrar o loop
                     {
@@ -79,7 +79,7 @@ namespace FrontEnd
         {
             FrontEndEscola.Models.Alunos aluno = CadastrarAluno();
             _alunosUC.CadastrarAlunos(aluno);
-            Console.WriteLine("Usuário cadastrado com sucesso");
+            Console.WriteLine("Aluno cadastrado com sucesso");
         }
 
         public int ExibirMenuAluno( Usuario usuario = null)
@@ -98,6 +98,7 @@ namespace FrontEnd
 
         }
 
+       
 
         public Notas ListarNotaPorAluno(int idaluno)
         {
